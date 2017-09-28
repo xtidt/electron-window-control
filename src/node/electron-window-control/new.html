@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>new page</title>
+</head>
+
+<body>
+    <h3>new page</h3>
+
+    <p>可向注册监听 new_chat_message 页面发送消息</p>
+
+    <p>
+        <button onclick="sendMessage()">sendMessageToRenderProgress</button>
+    </p>
+
+    <p>
+        <button onclick="removeListener()">removeListener</button>
+    </p>
+
+    <p>
+        <button onclick="removeAllListeners()">removeAllListeners</button>
+    </p>
+
+    <div id="content"></div>
+
+    <script>
+        const windowManager = require('./index');
+
+        function printout(param) {
+            document.getElementById('content').innerHTML = document.getElementById('content').innerHTML + '<br>' + param;
+        }
+
+        function listenMessage() {
+            windowManager.bridge.on(event, printout);
+        }
+
+        function listenMessageOnce() {
+            windowManager.bridge.once(event, function(param) {
+                document.getElementById('content').innerHTML = document.getElementById('content').innerHTML + '<br>' + param + ' once';
+            });
+        }
+
+        function removeAllListeners() {
+            windowManager.bridge.removeAllListeners(event, printout);
+        }
+
+
+        windowManager.init({
+            'mode': 'render'
+        }).then(() => {
+            windowManager.bridge.init();
+
+            listenMessage();
+
+            listenMessageOnce();
+        });
+
+        function sendMessage() {
+            windowManager.bridge.sendMessageToRenderProgress(1, 'pong');
+        }
+    </script>
+</body>
+
+</html>

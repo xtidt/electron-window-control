@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>electron windows controls</title>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <h3>electron windows controls</h3>
+    <ul>
+        <li>
+            <h4>初始化 init</h4>
+            <p>init( config )</p>
+        </li>
+
+        <li>
+            <h4>新建窗口 create</h4>
+            <p>create win</p>
+            <p><button onclick="create()">create</button></p>
+        </li>
+
+        <li>
+            <h4>获得所有窗口 getWindows</h4>
+            <p>get windows</p>
+            <p><button onclick="getWindows()">getWindows()</button></p>
+        </li>
+
+        <li>
+            <h4>获得所有渲染窗口 getRenderWindows</h4>
+            <p>get RenderWindows</p>
+            <p><button onclick="getRenderWindows()">getRenderWindows()</button></p>
+        </li>
+
+        <li>
+            <h4>获得渲染窗口数目 countRenderWindow</h4>
+            <p>countRenderWindow</p>
+            <p><button onclick="countRenderWindow()">countRenderWindow()</button></p>
+        </li>
+
+        <li>
+            <h4>展示并且使窗口获得焦点. show</h4>
+            <p>show win</p>
+            <p><button onclick="showWindowByName('xxxxx')">showWindowByName('xxxxx')</button></p>
+        </li>
+
+        <li>
+            <h4>隐藏并且使窗口失去焦点. hide</h4>
+            <p>hide win</p>
+            <p><button onclick="hideWindowByName('xxxxx')">hideWindowByName('xxxxx')</button></p>
+        </li>
+
+        <li>
+            <h4>关闭并且使窗口失去焦点. hide</h4>
+            <p>close win</p>
+            <p><button onclick="closeWindowByName('xxxxx')">closeWindowByName('xxxxx')</button></p>
+        </li>
+
+        <li>
+            <h4>最大化窗口</h4>
+            <p>fullscreen win</p>
+            <p><button onclick="fullScreenByName('xxxxx')">fullScreenByName('xxxxx')</button></p>
+        </li>
+
+        <li>
+            <h4>根据name获得单一窗口 getWindowByName</h4>
+            <p>get win</p>
+            <p><button onclick="getWindowByName('xxxxx')">getWindowByName('xxxxx')</button></p>
+        </li>
+
+        <li>
+            <h4>获得当前的焦点窗口对象</h4>
+            <p>getFocusedWindow</p>
+            <p><button onclick="getFocusedWindow()">getFocusedWindow()</button></p>
+        </li>
+
+        <li>
+            <h4>指定窗口对象获得焦点</h4>
+            <p>focusWindowByName</p>
+            <p><button onclick="focusWindowByName()">focusWindowByName()</button></p>
+        </li>
+
+        <li>
+            <h4>关闭所有渲染进程窗口</h4>
+            <p>close all render windows</p>
+            <p><button onclick="closeAllRenderWindows()">closeAllRenderWindows()</button></p>
+        </li>
+
+        <li>
+            <h4>关闭所有窗口</h4>
+            <p>close all windows</p>
+            <p><button onclick="closeAllWindows()">closeAllWindows()</button></p>
+        </li>
+    </ul>
+
+    <br>
+    <h3>class: windowManager.sharedData</h3>
+    <p>各个窗口之间共享数据</p>
+
+    <ul>
+        <li>
+            <h4>设置全局数据</h4>
+            <p>set global data</p>
+            <p><button onclick="setData()">set global data</button></p>
+        </li>
+
+        <li>
+            <h4>获得全局数据</h4>
+            <p>fetch global data</p>
+            <p><button onclick="getData()">fetch global data</button></p>
+        </li>
+    </ul>
+
+    <br>
+    <h3>class: windowManager.bridge</h3>
+    <p>各个窗口之间共享数据</p>
+    <ul>
+        <li>
+            <h4>初始化ipc</h4>
+            <p>windowManager.bridge.init()</p>
+        </li>
+
+        <li>
+            <h4>发送消息，事件名为 channel</h4>
+            <p>向主进程发送消息</p>
+            <p><button onclick="sendMessageToMainProgress()">sendMessageToMainProgress</button></p>
+        </li>
+
+        <li>
+            <h4>渲染之前通信</h4>
+            <p>向渲染进程发送消息</p>
+            <p><button onclick="sendMessageToRenderProgress()">sendMessageToRenderProgress</button></p>
+        </li>
+
+        <li>
+            <h4>监听消息</h4>
+            <p>进程间发送消息</p>
+            <p><button onclick="listenMessage()">listenMessage</button></p>
+        </li>
+    </ul>
+    <div id="content"></div>
+</body>
+
+</html>
