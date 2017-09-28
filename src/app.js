@@ -4,23 +4,6 @@ const path = require('path');
 const { app, BrowserWindow } = electron;
 const windowManager = require('./node/electron-window-control/index');
 
-function createWindow() {
-    let mainWindow = new BrowserWindow({
-        width: 1024,
-        height: 800,
-        // titleBarStyle: 'hidden',
-    });
-
-    mainWindow.loadURL(url.format({
-        host: 'yunkai.com',
-        protocol: 'http',
-    }));
-
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
-}
-
 var electronControlDemo = function() {
     windowManager.init({
         'mode': 'main'
@@ -34,5 +17,5 @@ var electronControlDemo = function() {
 }
 
 app.on('ready', () => {
-    createWindow();
+    electronControlDemo();
 });
