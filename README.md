@@ -134,7 +134,7 @@ windowManager.createWin({
 
 > 计算所有渲染进程窗口数目
 
-## 窗口共享数据
+# 窗口共享数据
 
 > 私有对象 _data 存取数据
 
@@ -145,11 +145,37 @@ windowManager.global.set('name', 'tony');
 ```
 
 ## 获取共享数据
+```
+windowManager.global.fetch('name')
+```
 
+# ipc 窗口间通信
 
+## 向主进程发送消息通信 sendMessageToMainProgress
 
+```
+windowManager.bridge.sendMessageToMainProgress('ping')
+```
 
+## 向渲染进程发送消息通信 sendMessageToRenderProgress
+```
+windowManager.bridge.sendMessageToRenderProgress('pong')
+```
 
+## 进程添加监听 on
+```
+windowManager.bridge.on(event, handler);
+```
+
+## 进程添加监听仅一次 once
+```
+windowManager.bridge.once(event, handler);
+```
+
+## 移除所有监听 removeAllListeners
+```
+windowManager.bridge.removeAllListeners(event, handler);
+```
 
 
 
